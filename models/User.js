@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const thoughtSchema = require("./Thought");
-const { isEmail } = require("validator"); //?
+const { isEmail } = require("validator");
 // Schema to create User model
 const userSchema = new Schema(
   {
@@ -35,7 +35,7 @@ const userSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true, //??
+      virtuals: true,
     },
   }
 );

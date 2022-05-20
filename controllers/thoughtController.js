@@ -28,16 +28,29 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Delete a thought
+  // Delete a thought and remove from user
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought with that ID" })
-          : User.deleteMany({ _id: { $in: thought.users } })
+          : User.findOneAndUpdate(
+              { thoughts: req.params.thoughtId },
+              { $pull: { thoughts: req.params.thoughtId } },
+              { new: true }
+            )
       )
-      .then(() => res.json({ message: "Thought and users deleted!" }))
-      .catch((err) => res.status(500).json(err));
+      .then((user) =>
+        !user
+          ? res.status(404).json({
+              message: "Thought deleted, but no users found",
+            })
+          : res.json({ message: "Thought successfully deleted" })
+      )
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
   // Update a thought
   updateThought(req, res) {
@@ -71,7 +84,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  removeAssignment(req, res) {
+  deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtsId },
       { $pull: { reaction: { reactionId: req.params.reactionId } } },

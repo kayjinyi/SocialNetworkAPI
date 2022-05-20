@@ -75,10 +75,6 @@ Feel free to reach out via Github or email with any questions. <br>
 
 ---
 
-## Getting Started
-
-Use the following guidelines to set up your models and API routes:
-
 ### API Routes
 
 **`/api/users`**

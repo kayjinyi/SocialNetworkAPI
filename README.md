@@ -97,7 +97,7 @@ Feel free to reach out via Github or email with any questions. <br>
 
 - `DELETE` to remove user by its `_id`
 
-**BONUS**: Remove a user's associated thoughts when deleted.
+Remove a user's associated thoughts when deleted.
 
 ---
 

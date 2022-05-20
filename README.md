@@ -44,26 +44,30 @@ Be sure to have MongoDB installed on your machine. Follow the [MongoDB installat
 
 The following images show examples of the application's API routes being tested in Insomnia.
 
-The following animation shows GET routes to return all users and all thoughts being tested in Insomnia:
+The following images shows GET routes to return all users and all thoughts being tested in Insomnia:
 
-![Demo of GET routes to return all users and all thoughts being tested in Insomnia.](./Assets/18-nosql-homework-demo-01.gif)
+![Demo of GET routes to return all users being tested in Insomnia.](./assets/get%20all%20users.png)
+![Demo of GET routes to return all thoughts being tested in Insomnia.](./assets/get%20all%20thoughts.png)
 
-The following animation shows GET routes to return a single user and a single thought being tested in Insomnia:
+The following images show GET routes to return a single user and a single thought being tested in Insomnia:
 
-![Demo that shows GET routes to return a single user and a single thought being tested in Insomnia.](./Assets/18-nosql-homework-demo-02.gif)
+![Demo that shows GET routes to return a single user being tested in Insomnia.](./assets/find%20user%20by%20ID.png)
+![Demo that shows GET routes to return a single thought being tested in Insomnia.](./assets/get%20thought%20by%20ID.png)
 
-The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia:
+The following image show the POST, PUT, and DELETE routes for users being tested in Insomnia:
 
-![Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia.](./Assets/18-nosql-homework-demo-03.gif)
+![Demo that shows the POST routes for users being tested in Insomnia.](./assets/postUser.png)
+![Demo that shows the PUT routes for users being tested in Insomnia.](./assets/update%20user.png)
+![Demo that shows the DELETE routes for users being tested in Insomnia.](./)
 
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
+The following image show the POST DELETE routes for thougts being tested in Insomnia:
+
+![Demo that shows the POST routes for users being tested in Insomnia.](./assets/postThought.png)
 
 The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
 ![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
 ![Demo that shows the POST and er’s friend list being tested in Insomnia.](./Assets/automation.gif)
-
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
 ---
 

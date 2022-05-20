@@ -3,13 +3,13 @@ const { User, Thought } = require("../models");
 module.exports = {
   // Get all users
   getAllUsers(req, res) {
-    Thought.find()
+    User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
   // Get a single user
   getSingleUser(req, res) {
-    Thought.findOne({ _id: req.params.userId })
+    User.findOne({ _id: req.params.userId })
       .select("-__v")
       .populate("thoughts")
       .then((user) =>
@@ -17,7 +17,10 @@ module.exports = {
           ? res.status(404).json({ message: "No user with that ID" })
           : res.json(user)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        res.status(500).json(err);
+        console.log(err);
+      });
   },
   // create a new user
   createUser(req, res) {
@@ -34,9 +37,9 @@ module.exports = {
           ? res.status(404).json({ message: "No such user exists" })
           : Thought.eleteMany({ _id: { $in: user.thoughts } })
       )
-      .then(() => res.json({ message: "User and thoughtss deleted!" }))
-      .catch((err) => res.status(500).json(err));
+      .then(() => res.json({ message: "User and thoughtss deleted!" }));
   },
+
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -50,10 +53,10 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
   addFriend(req, res) {
     console.log("You are adding an friend");
-    console.log(req.body);
-    Student.findOneAndUpdate(
+    User.findOneAndUpdate(
       { _id: req.params.userId },
       { $addToSet: { friends: req.body } },
       { runValidators: true, new: true }

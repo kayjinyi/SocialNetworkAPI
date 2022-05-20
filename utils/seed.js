@@ -9,12 +9,16 @@ connection.once("open", async () => {
   await User.deleteMany({});
 
   // Drop existing thoughts
-  // await Thought.deleteMany({});
+  await Thought.deleteMany({});
 
-  // Create empty array to hold the thoughts
   const thoughts = [
     {
       thoughtText: "Here's a cool thought...",
+      username: "lernantino",
+      // userId: "62880a6a36d285de026c5873",
+    },
+    {
+      thoughtText: "Super cool.",
       username: "lernantino",
       // userId: "62880a6a36d285de026c5873",
     },
@@ -27,10 +31,10 @@ connection.once("open", async () => {
     { username: "lern", email: "lern@gmail.com" },
   ];
   // Add thoughts to the collection and await the results
-  await Thought.collection.insertMany(thoughts);
+  await Thought.insertMany(thoughts);
 
   // Add courses to the collection and await the results
-  await User.collection.insertMany(users);
+  await User.insertMany(users);
 
   // Log out the seed data to indicate what should appear in the database
   console.table(thoughts);

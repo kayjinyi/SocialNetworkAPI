@@ -14,31 +14,32 @@ connection.once("open", async () => {
   const thoughts = [
     {
       thoughtText: "Here's a cool thought...",
-      username: "lernantino",
+
       // userId: "62880a6a36d285de026c5873",
     },
     {
-      thoughtText: "Super cool.",
-      username: "lernantino",
+      thoughtText: "Super.",
+
       // userId: "62880a6a36d285de026c5873",
     },
   ];
   const users = [
     {
-      username: "lernantino",
-      email: "lernantino@gmail.com",
+      username: "jinyi",
+      email: "jinyi@gmail.com",
+      thoughts: [...thoughts],
     },
-    { username: "lern", email: "lern@gmail.com" },
+    { username: "luke", email: "luke@gmail.com", thoughts: [] },
   ];
   // Add thoughts to the collection and await the results
-  await Thought.insertMany(thoughts);
-
+  await Thought.collection.insertMany(thoughts);
   // Add courses to the collection and await the results
-  await User.insertMany(users);
+  await User.collection.insertMany(users);
 
   // Log out the seed data to indicate what should appear in the database
   console.table(thoughts);
   console.table(users);
+
   console.info("Seeding complete! 🌱");
   process.exit(0);
 });

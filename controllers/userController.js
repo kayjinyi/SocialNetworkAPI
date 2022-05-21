@@ -31,13 +31,13 @@ module.exports = {
 
   // Delete a user and remove their thought
   deleteUser(req, res) {
-    User.findOneAndRemove({ _id: req.params.userId })
+    User.findOneAndDelete({ _id: req.params.userId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No such user exists" })
-          : Thought.eleteMany({ _id: { $in: user.thoughts } })
+          : Thought.deleteMany({ _id: { $in: user.thoughts } })
       )
-      .then(() => res.json({ message: "User and thoughtss deleted!" }));
+      .then(() => res.json({ message: "User and thoughts deleted!" }));
   },
 
   updateUser(req, res) {

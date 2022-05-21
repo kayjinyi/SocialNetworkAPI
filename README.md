@@ -1,6 +1,6 @@
 # SocialNetworkAPI
 
-an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
+An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
 
 - Walkthrough video:
 -
@@ -66,7 +66,7 @@ The following image show the POST DELETE routes for thougts being tested in Inso
 
 The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
-![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
+![Demo that shows the POST routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
 ![Demo that shows the POST and er’s friend list being tested in Insomnia.](./Assets/automation.gif)
 
 ---

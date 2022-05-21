@@ -40,11 +40,6 @@ const thoughtSchema = new Schema(
       minLength: 1,
       maxLength: 280,
     },
-    username: {
-      type: Schema.Types.String,
-      required: true,
-      ref: "User",
-    },
     reactions: [reactionSchema],
     createdAt: {
       type: Date,
@@ -59,7 +54,7 @@ const thoughtSchema = new Schema(
       virtuals: true,
       getters: true,
     },
-    // id: false,
+    id: false,
   }
 );
 

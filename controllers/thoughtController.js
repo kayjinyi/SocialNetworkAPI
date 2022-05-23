@@ -4,6 +4,7 @@ module.exports = {
   // Get all thoughts
   getThoughts(req, res) {
     Thought.find()
+      .select("-__v")
       .then((thoughts) => res.json(thoughts))
       .catch((err) => {
         console.log(err);
@@ -15,36 +16,40 @@ module.exports = {
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
+      .populate("users")
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought with that ID" })
           : res.json(thought)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err), res.status(500).json(err);
+      });
   },
   // Create a thought
 
   createThought(req, res) {
     Thought.create(req.body)
-      .then((thought) => {
-        return User.findOneAndUpdate(
+      .then((thought) =>
+        User.findOneAndUpdate(
           { _id: req.body.userId },
           { $addToSet: { thoughts: thought._id } },
           { new: true }
-        );
-      })
+        )
+      )
       .then((user) =>
         !user
           ? res.status(404).json({
-              message: "Thought created, but found no user with that ID",
+              message: "Thought added, but no users found",
             })
-          : res.json("Created the thought 🎉")
+          : res.json({ message: "Thought successfully created" })
       )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
       });
   },
+
   // Delete a thought and remove from user
   deleteThought(req, res) {
     Thought.findOneAndRemove({ _id: req.params.thoughtId })
@@ -101,6 +106,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtsId },

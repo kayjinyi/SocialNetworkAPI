@@ -14,7 +14,6 @@ const reactionSchema = new Schema(
     },
     username: {
       type: String,
-      required: true,
     },
     createdAt: {
       type: Date,
@@ -40,6 +39,9 @@ const thoughtSchema = new Schema(
       minLength: 1,
       maxLength: 280,
     },
+    username: {
+      type: String,
+    },
     reactions: [reactionSchema],
     createdAt: {
       type: Date,
@@ -54,7 +56,7 @@ const thoughtSchema = new Schema(
       virtuals: true,
       getters: true,
     },
-    id: false,
+    // id: false,
   }
 );
 

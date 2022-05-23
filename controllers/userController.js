@@ -12,11 +12,10 @@ module.exports = {
     User.findOne({ _id: req.params.userId })
       .select("-__v")
       .populate("thoughts")
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No user with that ID" })
-          : res.json(user)
-      )
+      .then((user) => {
+        res.json(user);
+        console.log(user.thoughts[0]);
+      })
       .catch((err) => {
         res.status(500).json(err);
         console.log(err);
@@ -32,11 +31,11 @@ module.exports = {
   // Delete a user and remove their thought
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No such user exists" })
-          : Thought.deleteMany({ _id: { $in: user.thoughts } })
-      )
+      // .then((user) =>
+      //   !user
+      //     ? res.status(404).json({ message: "No such user exists" })
+      //     : Thought.deleteMany({ _id: { $in: user.thoughts } })
+      // )
       .then(() => res.json({ message: "User and thoughts deleted!" }));
   },
 
@@ -70,7 +69,7 @@ module.exports = {
   },
   // Remove friend from a user
   removeFriend(req, res) {
-    Student.findOneAndUpdate(
+    User.findOneAndUpdate(
       { _id: req.params.userId },
       { $pull: { friend: { friendId: req.params.friendId } } },
       { runValidators: true, new: true }

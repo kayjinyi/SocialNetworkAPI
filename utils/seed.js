@@ -14,20 +14,24 @@ connection.once("open", async () => {
   const thoughts = [
     {
       thoughtText: "Here's a cool thought...",
-
+      username: "jinyi",
+      reactions: [{ reactionBody: "nice" }],
       // userId: "62880a6a36d285de026c5873",
     },
     {
       thoughtText: "Super.",
-
+      username: "jinyi",
+      reactions: [],
       // userId: "62880a6a36d285de026c5873",
     },
   ];
+
   const users = [
     {
       username: "jinyi",
       email: "jinyi@gmail.com",
-      thoughts: [...thoughts],
+      // thoughts: [...thoughts],
+      thoughts: [],
     },
     { username: "luke", email: "luke@gmail.com", thoughts: [] },
   ];

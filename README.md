@@ -58,7 +58,7 @@ The following image show the POST, PUT, and DELETE routes for users being tested
 
 ![Demo that shows the POST routes for users being tested in Insomnia.](./assets/postUser.png)
 ![Demo that shows the PUT routes for users being tested in Insomnia.](./assets/update%20user.png)
-![Demo that shows the DELETE routes for users being tested in Insomnia.](./)
+![Demo that shows the DELETE routes for users being tested in Insomnia.](./assets/delete%20user.png)
 
 The following image show the POST DELETE routes for thougts being tested in Insomnia:
 

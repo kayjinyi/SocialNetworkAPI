@@ -31,11 +31,11 @@ module.exports = {
   // Delete a user and remove their thought
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
-      // .then((user) =>
-      //   !user
-      //     ? res.status(404).json({ message: "No such user exists" })
-      //     : Thought.deleteMany({ _id: { $in: user.thoughts } })
-      // )
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: "No such user exists" })
+          : Thought.deleteMany({ _id: { $in: user.thoughts } })
+      )
       .then(() => res.json({ message: "User and thoughts deleted!" }));
   },
 
@@ -57,7 +57,7 @@ module.exports = {
     console.log("You are adding an friend");
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.body } },
+      { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
@@ -71,8 +71,8 @@ module.exports = {
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { friend: { friendId: req.params.friendId } } },
-      { runValidators: true, new: true }
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
     )
       .then((user) =>
         !user

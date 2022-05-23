@@ -16,7 +16,6 @@ module.exports = {
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
-      .populate("users")
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought with that ID" })
@@ -88,7 +87,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Create a reaction
+
   createReaction(req, res) {
     console.log("You have a reaction");
     console.log(req.body);
@@ -104,14 +103,17 @@ module.exports = {
               .json({ message: "No thoughts found with that ID :(" })
           : res.json(thoughts)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        res.status(500).json(err);
+        console.log(err);
+      });
   },
 
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtsId },
-      { $pull: { reaction: { reactionId: req.params.reactionId } } },
-      { runValidators: true, new: true }
+      { $pull: { reactions: req.params.reactionId } },
+      { new: true }
     )
       .then((thoughts) =>
         !thoughts

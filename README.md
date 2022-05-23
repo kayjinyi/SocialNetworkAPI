@@ -2,8 +2,8 @@
 
 An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
 
-- Walkthrough video:
--
+- Walkthrough video: -https://watch.screencastify.com/v/fWxLAMXwbagEJpEuzULY
+  and https://watch.screencastify.com/v/CLDmb4iFQvOJoYbWJHNE
 
 ## Table of Contents
 
@@ -63,11 +63,11 @@ The following image show the POST, PUT, and DELETE routes for users being tested
 The following image show the POST DELETE routes for thougts being tested in Insomnia:
 
 ![Demo that shows the POST routes for users being tested in Insomnia.](./assets/postThought.png)
-
+![Demo that shows the DELETE routes for users being tested in Insomnia.](./assets/deletethought.png)
 The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
-![Demo that shows the POST routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
-![Demo that shows the POST and er’s friend list being tested in Insomnia.](./Assets/automation.gif)
+![Demo that shows the POST routes for a user’s friend list being tested in Insomnia.](./assets/AddFriend.png)
+![Demo that shows the POST and er’s friend list being tested in Insomnia.](./assets/RemoveFriend.png)
 
 ---
 
